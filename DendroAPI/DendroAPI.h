@@ -6,15 +6,26 @@
 
 #include "DendroGrid.h"
 
+
+// Windows
 #ifdef _WIN32
-#ifdef DENDROAPI_EXPORTS
-#define DENDRO_API __declspec(dllexport)
-#else
-#define DENDRO_API __declspec(dllimport)
-#endif
+	#ifdef DENDROAPI_EXPORTS
+	#define DENDRO_API __declspec(dllexport)
+	#else
+	#define DENDRO_API __declspec(dllimport)
+	#endif
+
+// MacOS
+#elif __APPLE__ && __MACH__
+	#ifdef DENDROAPI_EXPORTS
+	#define DENDRO_API __attribute__(( visibility("default") ))
+	#endif
+
+// Other platforms
 #else
 #define DENDRO_API
 #endif
+
 
 #ifdef __cplusplus
 extern "C" {
