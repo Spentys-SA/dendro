@@ -1,6 +1,6 @@
 # This starter workflow is for a CMake project running on multiple platforms. There is a different starter workflow if you just want a single platform.
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
-name: CMake build
+name: CMake build for Windows and Linux Builds
 
 on:
   workflow_dispatch:
@@ -80,7 +80,7 @@ jobs:
         restore-keys: vcpkg-${{ runner.os }}-
     
     - name: Set up vcpkg cache (Windows)
-      if: matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'windows-latest'
       uses: actions/cache@v3
       with:
         path: C:\Users\runneradmin\AppData\Local\vcpkg\archives

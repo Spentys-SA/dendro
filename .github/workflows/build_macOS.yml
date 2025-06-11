@@ -132,17 +132,17 @@ jobs:
         - name: Create release package
           run: |
             # Create a zip archive of the universal bundle
-            zip -r dendro-universal-plugin.zip DendroAPI_macos_universal.bundle/
+            zip -r dendro-universal-plugin.zip DendroAPI_macos.bundle/
             
             echo "Package created: dendro-universal-plugin.zip"
             echo "Package size: $(du -h dendro-universal-plugin.zip | cut -f1)"
             
             # Show final bundle info
             echo "Final universal bundle info:"
-            echo "Bundle size: $(du -sh DendroAPI_macos_universal.bundle | cut -f1)"
-            echo "Binary architecture: $(lipo -info DendroAPI_macos_universal.bundle/Contents/MacOS/DendroAPI_macos)"
+            echo "Bundle size: $(du -sh DendroAPI_macos.bundle | cut -f1)"
+            echo "Binary architecture: $(lipo -info DendroAPI_macos.bundle/Contents/MacOS/DendroAPI_macos)"
 
-            
+
         - name: Upload universal bundle
           uses: actions/upload-artifact@v4
           with:
