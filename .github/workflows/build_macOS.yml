@@ -1,8 +1,11 @@
-name: CMake build for MacOS Universal Builds
+# Build pipeline to generate separate Intel and Arm builds for MacOS using CMake and vcpkg and then creates a univeral bundle from them.
+name: Make plugins for MacOS Universal
 
 on:
   workflow_dispatch:
   push:
+    branches: [ "master" ]
+  pull_request:
     branches: [ "master" ]
 
 jobs:
