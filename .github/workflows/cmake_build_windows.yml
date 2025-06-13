@@ -1,6 +1,6 @@
 # This starter workflow is for a CMake project running on multiple platforms. There is a different starter workflow if you just want a single platform.
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
-name: Make plugins for Windows and Linux
+name: Make plugins for Windows. # Linux (Commented out for now as we do not have a Linux build yet)
 
 on:
   workflow_dispatch:
@@ -23,22 +23,22 @@ jobs:
       #
       # To add more build types (Release, Debug, RelWithDebInfo, etc.) customize the build_type list.
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]    # ubuntu-latest 
         build_type: [Release]
-        c_compiler: [gcc, cl]
+        c_compiler: [cl]        # gcc
         include:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
-          - os: ubuntu-latest
-            c_compiler: gcc
-            cpp_compiler: g++
+          # - os: ubuntu-latest
+          #   c_compiler: gcc
+          #   cpp_compiler: g++
           
         exclude:
           - os: windows-latest
             c_compiler: gcc
-          - os: ubuntu-latest
-            c_compiler: cl
+          # - os: ubuntu-latest
+          #   c_compiler: cl
 
           
 
